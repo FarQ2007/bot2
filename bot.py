@@ -4,7 +4,7 @@ from telebot import types
 import texts
 from db import Database
 import time
-import texts
+import conf
 
 bot = telebot.TeleBot(conf.Token)
 
@@ -31,7 +31,7 @@ def answer(call):
     if call.data == '1.':
         markup_inline = types.InlineKeyboardMarkup(row_width=1)
 
-        item_info = types.InlineKeyboardButton(text='Вся полезная информация', url='https://taplink.cc/',  callback_data='infor')
+        item_info = types.InlineKeyboardButton(text='Вся полезная информация', url='https://taplink.cc/timmy_toys',  callback_data='infor')
         item_return = types.InlineKeyboardButton(text='Вернуться к начальному сообщению', callback_data='return')
         markup_inline.add(item_info, item_return)
         bot.send_message(call.message.chat.id, texts.Texts['text2'],
