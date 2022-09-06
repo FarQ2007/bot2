@@ -1,9 +1,10 @@
 import telebot
 import sqlite3
 from telebot import types
-import conf
+import texts
 from db import Database
 import time
+import texts
 
 bot = telebot.TeleBot(conf.Token)
 
@@ -18,7 +19,7 @@ def first(message):
         item_three = types.InlineKeyboardButton(text='3. У меня возникли вопросы/проблемы', callback_data='3.')
 
         markup_inline.add(item_one, item_two, item_three)
-        bot.send_message(message.chat.id, 'Привет, {0.first_name}!\n\n'.format(message.from_user) + conf.Texts['text1'],
+        bot.send_message(message.chat.id, 'Привет, {0.first_name}!\n\n'.format(message.from_user) + texts.Texts['text1'],
             reply_markup=markup_inline
         )
 
@@ -33,7 +34,7 @@ def answer(call):
         item_info = types.InlineKeyboardButton(text='Вся полезная информация', url='https://taplink.cc/',  callback_data='infor')
         item_return = types.InlineKeyboardButton(text='Вернуться к начальному сообщению', callback_data='return')
         markup_inline.add(item_info, item_return)
-        bot.send_message(call.message.chat.id, conf.Texts['text2'],
+        bot.send_message(call.message.chat.id, texts.Texts['text2'],
             reply_markup=markup_inline
         )
         bot.answer_callback_query(callback_query_id=call.id)
@@ -45,7 +46,7 @@ def answer(call):
         item_return = types.InlineKeyboardButton(text='Вернуться к начальному сообщению', callback_data='return')
         file = open('instr.png', 'rb')
         markup_inline.add(item_special, item_ready, item_return)
-        bot.send_photo(call.message.chat.id, file, conf.Texts['text3'],
+        bot.send_photo(call.message.chat.id, file, texts.Texts['text3'],
             reply_markup=markup_inline
         )
         bot.answer_callback_query(callback_query_id=call.id)
@@ -55,7 +56,7 @@ def answer(call):
         item_help = types.InlineKeyboardButton(text='Задать вопросы', url='https://t.me/svetik_0688', callback_data='help')
         item_return = types.InlineKeyboardButton(text='Вернуться к начальному сообщению', callback_data='return')
         markup_inline.add(item_help, item_return)
-        bot.send_message(call.message.chat.id, conf.Texts['text4'],
+        bot.send_message(call.message.chat.id, texts.Texts['text4'],
             reply_markup=markup_inline
         )
         bot.answer_callback_query(callback_query_id=call.id)
@@ -66,7 +67,7 @@ def answer(call):
         item_screen = types.InlineKeyboardButton(text='Получить бонус', url='https://t.me/svetik_0688', callback_data='screen')
         item_return = types.InlineKeyboardButton(text='Вернуться к начальному сообщению', callback_data='return')
         markup_inline.add(item_screen, item_return)
-        bot.send_message(call.message.chat.id, conf.Texts['text5'],
+        bot.send_message(call.message.chat.id, texts.Texts['text5'],
             reply_markup=markup_inline
         )
         bot.answer_callback_query(callback_query_id=call.id)
@@ -78,7 +79,7 @@ def answer(call):
         item_three = types.InlineKeyboardButton(text='3. У меня возникли вопросы/проблемы', callback_data='3.')
 
         markup_inline.add(item_one, item_two, item_three)
-        bot.send_message(call.message.chat.id, 'Привет!\n\n'.format(call.message.from_user) + conf.Texts['text1'],
+        bot.send_message(call.message.chat.id, 'Привет!\n\n'.format(call.message.from_user) + texts.Texts['text1'],
             reply_markup=markup_inline
         )
         bot.answer_callback_query(callback_query_id=call.id)
